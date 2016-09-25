@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+</style>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<meta name="description" content="Tizen Mobile Web Basic Template" />
+<title>Insert title here</title>
+<link rel="stylesheet" href="./lib/tau/mobile/theme/default/tau.css">
+<link rel="stylesheet" type="text/css" href="css/style.css" />
+<script src="./lib/tau/mobile/js/tau.js" data-build-remove="false"></script>
+<script src="js/angular.min.js"></script>
+<script src="js/jquery.js"></script>
+<script src="js/main.js"></script>
+
+</head>
+<body>
+	<div class="ui-page" id="person-page">
+		<div class="ui-header" data-position="fixed">
+			<h1 class="person-name" id="person-title">홍길동</h1>
+			<script>
+				console.log(13123)
+				$(function() {
+					$('.person-name').text('person ' + personNum);
+				});
+			</script>
+		</div>
+		<div class="ui-content" id="person-contents" data-position="fixed">
+			<div id="top">
+				<ul id="person-list" class="ui-listview"
+					style="padding-bottom: 0.4cm">
+					<li class="ui-group-index">예약 목록</li>
+					<li class="ui-li-static">날짜 : 2016-09-24</li>
+					<li class="ui-li-static">사람 수 : 4명</li>
+					<li class="ui-group-index">예약 목록</li>
+					<li class="ui-li-static">123123</li>
+				</ul>
+				<script>
+					$(function() {
+						var dynamicTag = '<li class="ui-group-index">' + 'aa'
+								+ '</li>'
+								+ '<li class="ui-li-static">123123</li>'
+
+						$("#person-list").append(dynamicTag);
+						$("#person-list").append(dynamicTag);
+						$("#person-list").append(dynamicTag);
+						$("#person-list").append(dynamicTag);
+						$("#person-list").append(dynamicTag);
+						$("#person-list").append(dynamicTag);
+						$("#person-list").append(dynamicTag);
+						$("#person-list").append(dynamicTag);
+					});
+
+				</script>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

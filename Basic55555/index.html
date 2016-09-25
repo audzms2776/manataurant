@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html ng-app="Project">
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<meta name="description" content="Tizen Mobile Web Basic Template" />
+
+<title>Tizen Mobile Web Basic Application</title>
+
+<link rel="stylesheet" href="./lib/tau/mobile/theme/default/tau.css">
+<link rel="stylesheet" type="text/css" href="css/style.css" />
+<script src="js/angular.min.js"></script>
+<script src="js/jquery.js"></script>
+<script src="./lib/tau/mobile/js/tau.js" data-build-remove="false"></script>
+<script type="text/javascript"
+	src="https://openapi.map.naver.com/openapi/v3/maps.js?clientId=a1RZIb1p59TLbq3iu_un"></script>
+
+</head>
+
+<body>
+	<div class="ui-page" id="main" ng-controller="DefaultCtrl">
+		<div class="ui-tabs">
+			<div class="ui-tabbar">
+				<ul>
+					<li class="ui-li-anchor"><a href="#" class="ui-tab-active"
+						data-inline="true">예약</a></li>
+					<li class="ui-li-anchor"><a href="#" data-inline="true">사람</a></li>
+					<li class="ui-li-anchor"><a href="#" data-inline="true">기록</a></li>
+					<li class="ui-li-anchor"><a href="#" data-inline="true">정보</a></li>
+				</ul>
+			</div>
+			<div class="ui-section-changer" id="sectionChanger">
+				<div>
+					<section class="ui-section-active">
+						<div style="background: white;">
+							<ul class="ui-listview">
+								<li class="ui-expandable" data-collapsed="false">
+									<h2>2016-08</h2>
+									<ul class="ui-listview">
+										<li class="ui-group-index">예약 목록</li>
+										<li class="ui-li-static">1line-sub <span
+											class="li-text-sub">Sub Text</span>
+										</li>
+										<li class="ui-li-static"><a href="#">List 1</a></li>
+										<li class="ui-li-static"><a href="#">List 2</a></li>
+									</ul>
+								</li>
+								<li class="ui-expandable"><h2>2016-09</h2></li>
+								<li class="ui-expandable"><h2>2016-10</h2></li>
+								<li class="ui-expandable"><h2>2016-11</h2></li>
+								<li class="ui-expandable"><h2>2016-12</h2></li>
+							</ul>
+						</div>
+					</section>
+					<section>
+						<ul class="ui-listview" ng-repeat="data in dataList">
+							<li class="ui-li-anchor" ng-click="changePage(data)"><a
+								href="#listview_popup" data-inline="true" data-rel="popup"
+								data-position-to="window">Person {{data}}</a></li>
+						</ul>
+					</section>
+					<section>
+						<ul class="ui-listview">
+							<li class="ui-li-anchor"><a href="#">List 1</a></li>
+							<li class="ui-li-anchor"><a href="#">List 2</a></li>
+							<li class="ui-li-anchor"><a href="#">List 3</a></li>
+						</ul>
+					</section>
+					<section style="background: white;">
+						<h2>가게 이름</h2>
+						<span>아이리스</span>
+						<h2>전화번호</h2>
+						<span>042-822-8299</span> <img
+							src="https://openapi.naver.com/v1/map/staticmap.bin?clientId=a1RZIb1p59TLbq3iu_un&url=localhost&crs=EPSG:4326&center=127.351988, 36.362655&level=13&w=340&h=450&baselayer=default&markers=127.351988, 36.362655"
+							style="margin-left: auto; margin-right: auto; display: block;" />
+					</section>
+				</div>
+			</div>
+		</div>
+		<div class="ui-page-indicator" id="pageIndicator"
+			data-number-of-pages="4" style="bottom: 0;"></div>
+		<script>
+			var sectionChanger = document.getElementById("sectionChanger");
+			var elPageIndicator = document.getElementById("pageIndicator");
+			var pageIndicator;
+			pageIndicator = tau.widget.PageIndicator(elPageIndicator);
+			pageIndicator.setActive(0);
+			sectionChanger.addEventListener("sectionchange", function(e) {
+				pageIndicator.setActive(e.detail.active);
+			}, false);
+		</script>
+		<div id="listview_popup" class="ui-popup ui-popup-listview">
+			<div class="ui-popup-header">Person name</div>
+			<div class="ui-popup-content">
+				<ul id="person-list" class="ui-listview">
+				</ul>
+				<script>
+					$(function() {
+						var dynamicTag = '<li class="ui-group-index">'
+								+ '2016-09-24'
+								+ '</li>'
+								+ '<li class="ui-li-static">'
+								+ '사람 수 : '
+								+ 4
+								+ '</li>'
+								+ '<li class="ui-li-static" style="margin-bottom: 0.5cm">'
+								+ '가격  : ' + 50000 + '</li>';
+
+						for (var i = 0; i < 10; i++)
+							$("#person-list").append(dynamicTag);
+					});
+				</script>
+			</div>
+			<div class="ui-popup-footer">
+				<a class="ui-btn" data-rel="back" data-inline="true">닫기</a>
+			</div>
+		</div>
+	</div>
+
+	<script src="js/main.js"></script>
+</body>
+
+</html>
