@@ -26,12 +26,12 @@ function getReserveList(req, res, next) {
             return;
         }
 
-        res.send(result).writeHead(200, {
+        res.writeHead(200, {
             'Access-Control-Allow-Origin': '*',
             'Access-Control-Allow-Methods': 'GET,POST,PUT,DELETE,OPTIONS',
             'Access-Control-Max-Age': 3600,
             'Access-Control-Allow-Headers': 'Origin,Accept,X-Requested-With,Content-Type,Access-Control-Request-Method,Access-Control-Request-Headers,Authorization'
-        });
+        }).send(result);
     });
 }
 
