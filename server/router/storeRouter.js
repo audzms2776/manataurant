@@ -49,7 +49,7 @@ function joinStore(req, res, next) {
             res.status(500).send({msg: err.message});
             return;
         }
-        
+
         res.setHeader('Access-Control-Allow-Origin', '*');
         res.setHeader('Access-Control-Allow-Methods', 'GET,POST,PUT,DELETE,OPTIONS');
         res.setHeader('Access-Control-Max-Age', 3600);

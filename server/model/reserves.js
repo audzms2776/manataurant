@@ -21,15 +21,37 @@ MongoClient.connect(url, function (err, database) {
 
 Reserves.sendReserveList = (store_phone, callback)=> {
 
-    db.collection('stores').find({'store_phone': store_phone}, {'_id': 0}).toArray((err, docs)=> {
+    db.collection('stores').find({'store_phone': store_phone}).toArray((err, docs)=> {
         if (err) {
             return callback(err, null);
         }
 
         var obj = {
-            length: docs[0]['subscriber'].length,
-            arr: docs[0]['subscriber']
+            arr: []
         };
+
+        var phone_arr = [];
+        var name_arr = [];
+        var users = docs[0]['subscriber'];
+
+        users.forEach((item)=> {
+            phone_arr.push(item['subscriber_phone']);
+            name_arr.push(item['name']);
+        });
+
+        var uniq_phone = phone_arr.reduce(function (a, b) {
+            if (a.indexOf(b) < 0) a.push(b);
+            return a;
+        }, []);
+
+        var uniq_name = name_arr.reduce(function (a, b) {
+            if (a.indexOf(b) < 0) a.push(b);
+            return a;
+        }, []);
+
+        uniq_phone.forEach((item, index)=> {
+            obj['arr'].push({'name': name_arr[index], 'pheon': item});
+        });
 
         callback(null, obj);
     });
@@ -54,6 +76,25 @@ Reserves.saveReserve = (store_phone, name, group, date, time, subscriber_phone, 
         }
 
         callback(null, {msg: "success"});
+    });
+};
+
+Reserves.sendSubscriberDetail = (store_phone, subscriber_phone, callback)=> {
+
+    db.collection('stores').find({'store_phone': store_phone}).toArray((err, result)=> {
+        if (err) {
+            return callback(err, null);
+        }
+
+        var subscribers = result[0]['subscriber'];
+
+        subscribers.forEach((item)=> {
+            if (item['subscriber_phone'] != subscriber_phone) {
+                subscribers.pop();
+            }
+        });
+
+        callback(null, {'arr': subscribers});
     });
 };
 
