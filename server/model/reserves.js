@@ -26,34 +26,26 @@ Reserves.sendReserveList = (store_phone, callback)=> {
             return callback(err, null);
         }
 
-        var obj = {
-            arr: []
-        };
-
-        var phone_arr = [];
-        var name_arr = [];
+        var arr = [];
         var users = docs[0]['subscriber'];
 
-        users.forEach((item)=> {
-            phone_arr.push(item['subscriber_phone']);
-            name_arr.push(item['name']);
-        });
+        if (users.length == 0) {
+            callback(null, {arr: []});
+            return;
+        }
 
-        var uniq_phone = phone_arr.reduce(function (a, b) {
-            if (a.indexOf(b) < 0) a.push(b);
-            return a;
-        }, []);
+        arr.push(users[0]);
 
-        var uniq_name = name_arr.reduce(function (a, b) {
-            if (a.indexOf(b) < 0) a.push(b);
-            return a;
-        }, []);
+        for (var i = 1; i < users.length; i++) {
+            arr.forEach((item)=> {
+                if (item['subscriber_phone'] != users[i]['subscriber_phone']) {
+                    arr.push(users[i]);
+                }
+            });
+        }
 
-        uniq_phone.forEach((item, index)=> {
-            obj['arr'].push({'name': name_arr[index], 'pheon': item});
-        });
-
-        callback(null, obj);
+        console.log(arr);
+        callback(null, {arr: arr});
     });
 };
 
