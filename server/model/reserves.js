@@ -36,15 +36,6 @@ Reserves.sendReserveList = (store_phone, callback)=> {
 
         arr.push(users[0]);
 
-        for (var i = 1; i < users.length; i++) {
-            arr.forEach((item)=> {
-                if (item['subscriber_phone'] != users[i]['subscriber_phone']) {
-                    arr.push(users[i]);
-                }
-            });
-        }
-
-        console.log(arr);
         callback(null, {arr: arr});
     });
 };
