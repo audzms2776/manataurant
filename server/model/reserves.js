@@ -92,9 +92,9 @@ Reserves.sendSubscriberDetail = (store_phone, subscriber_phone, callback)=> {
 
         var subscribers = result[0]['subscriber'];
 
-        subscribers.forEach((item)=> {
+        subscribers.forEach((item, index)=> {
             if (item['subscriber_phone'] != subscriber_phone) {
-                subscribers.pop();
+                subscribers.splice(index, 1);
             }
         });
 
