@@ -95,7 +95,7 @@ Reserves.sendSubscriberDetail = (store_phone, subscriber_phone, callback)=> {
 
         subscribers.forEach((item)=> {
             if(item['subscriber_phone'] == subscriber_phone){
-                myArr.push(item['subscriber_phone']);
+                myArr.push(item);
             }
         });
 
