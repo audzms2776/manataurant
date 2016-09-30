@@ -26,7 +26,6 @@ Reserves.sendReserveList = (store_phone, callback)=> {
             return callback(err, null);
         }
 
-        var arr = [];
         var users = docs[0]['subscriber'];
 
         if (users.length == 0) {
@@ -34,9 +33,31 @@ Reserves.sendReserveList = (store_phone, callback)=> {
             return;
         }
 
-        arr.push(users[0]);
+        var nameArr = [];
+        var phoneArr = [];
 
-        callback(null, {arr: arr});
+        users.forEach((item)=> {
+            nameArr.push(item['name']);
+            phoneArr.push(item['subscriber_phone']);
+        });
+
+        var resultNameArr = nameArr.reduce(function (a, b) {
+            if (a.indexOf(b) < 0) a.push(b);
+            return a;
+        }, []);
+
+        var resultPhoneArr = phoneArr.reduce(function (a, b) {
+            if (a.indexOf(b) < 0) a.push(b);
+            return a;
+        }, []);
+
+        var obj = [];
+
+        for (var i = 0; i < resultNameArr.length; i++) {
+            obj.push({'name': resultNameArr[i], 'phone': resultPhoneArr[i]});
+        }
+
+        callback(null, {'arr': obj});
     });
 };
 
