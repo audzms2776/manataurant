@@ -91,15 +91,17 @@ Reserves.sendSubscriberDetail = (store_phone, subscriber_phone, callback)=> {
         }
 
         var subscribers = result[0]['subscriber'];
+        var myArr = [];
 
-        subscribers.forEach((item, index)=> {
-            if (item['subscriber_phone'] != subscriber_phone) {
-                subscribers.splice(index, 1);
-                index--;
+        subscribers.forEach((item)=> {
+            if(item['subscriber_phone'] == subscriber_phone){
+                myArr.push(item['subscriber_phone']);
             }
         });
 
-        callback(null, {'arr': subscribers});
+        console.log(myArr);
+
+        callback(null, {'arr': myArr});
     });
 };
 
