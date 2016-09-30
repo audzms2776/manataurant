@@ -95,6 +95,7 @@ Reserves.sendSubscriberDetail = (store_phone, subscriber_phone, callback)=> {
         subscribers.forEach((item, index)=> {
             if (item['subscriber_phone'] != subscriber_phone) {
                 subscribers.splice(index, 1);
+                index--;
             }
         });
 
