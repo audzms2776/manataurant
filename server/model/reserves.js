@@ -141,11 +141,26 @@ Reserves.sendMainReserves = (store_phone, callback)=> {
 
             obj['arr'].forEach((element, idx)=> {
                 if (element['date'] == temp) {
-                    delete item['date'];
                     obj['arr'][idx]['reserves'].push(item);
                 }
             });
         });
+
+        // obj['arr'].forEach((item, idx, arr)=> {
+        //     console.log(item['reserves']);
+        //     obj['arr'][idx]['reserves'] = item['reserves'].sort(function (a, b) {
+        //         var keyA = a['time'];
+        //         var keyB = b['time'];
+        //
+        //         if (keyA > keyB) {
+        //             return 1;
+        //         } else if (keyA < keyB) {
+        //             return -1;
+        //         } else {
+        //             return 0;
+        //         }
+        //     });
+        // });
 
         callback(null, obj);
     });
