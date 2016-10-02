@@ -52,7 +52,6 @@ function addReserveList(req, res, next) {
     const subscriber_phone = req['query']['subscriber_phone'];
     const number = parseInt(req['query']['number']);
 
-    console.log(req);
     Reserves.saveReserve(store_phone, name, group, date, time, subscriber_phone, number, (err, result)=> {
         if (err) {
             res.status(500).send({msg: err.message});
