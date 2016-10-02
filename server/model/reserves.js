@@ -94,7 +94,7 @@ Reserves.sendSubscriberDetail = (store_phone, subscriber_phone, callback)=> {
         var myArr = [];
 
         subscribers.forEach((item)=> {
-            if(item['subscriber_phone'] == subscriber_phone){
+            if (item['subscriber_phone'] == subscriber_phone) {
                 myArr.push(item);
             }
         });
@@ -102,6 +102,52 @@ Reserves.sendSubscriberDetail = (store_phone, subscriber_phone, callback)=> {
         console.log(myArr);
 
         callback(null, {'arr': myArr});
+    });
+};
+
+Reserves.sendMainReserves = (store_phone, callback)=> {
+
+    db.collection('stores').find({'store_phone': store_phone}).toArray((err, docs)=> {
+        if (err) {
+            return callback(err, null);
+        }
+
+        var subscriber = docs[0]['subscriber'];
+        var obj = {'arr': []};
+        var dateArr = [];
+        subscriber.forEach((item)=> {
+            var temp = item['date'].split('-');
+            dateArr.push(temp[0] + '-' + temp[1]);
+        });
+
+        var middleArr = [];
+        middleArr = dateArr.reduce(function (a, b) {
+            if (a.indexOf(b) < 0) a.push(b);
+            return a;
+        }, []);
+
+        middleArr = middleArr.sort();
+        console.log(middleArr);
+
+        middleArr.forEach((item)=> {
+            obj['arr'].push({'date': item, 'reserves': []});
+        });
+
+        subscriber.forEach((item)=> {
+
+            var tempDate = item['date'].split('-');
+            var temp = tempDate[0] + '-' + tempDate[1];
+            console.log(temp);
+
+            obj['arr'].forEach((element, idx)=> {
+                if (element['date'] == temp) {
+                    delete item['date'];
+                    obj['arr'][idx]['reserves'].push(item);
+                }
+            });
+        });
+
+        callback(null, obj);
     });
 };
 

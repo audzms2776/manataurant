@@ -10,7 +10,10 @@ router.route('/reserves/:store_phone')
     .get(getReserveList)
     .post(addReserveList);
 
-router.route('/reserves/:store_phone/:subscriber_phone')
+router.route('/reserves/main/:store_phone')
+    .get(getReservesMainList);
+
+router.route('/reserves/list/:store_phone/:subscriber_phone')
     .get(getSubscriberDetail);
 
 function getReserveList(req, res, next) {
@@ -67,6 +70,24 @@ function getSubscriberDetail(req, res) {
     const subscriber_phone = req['params']['subscriber_phone'];
 
     Reserves.sendSubscriberDetail(store_phone, subscriber_phone, (err, result)=> {
+        if (err) {
+            res.status(500).send({msg: err.message});
+            return;
+        }
+
+        res.setHeader('Access-Control-Allow-Origin', '*');
+        res.setHeader('Access-Control-Allow-Methods', 'GET,POST,PUT,DELETE,OPTIONS');
+        res.setHeader('Access-Control-Max-Age', 3600);
+        res.setHeader('Access-Control-Allow-Headers', 'Origin,Accept,X-Requested-With,Content-Type,Access-Control-Request-Method,Access-Control-Request-Headers,Authorization');
+        res.send(result);
+    });
+}
+
+function getReservesMainList(req, res) {
+
+    const store_phone = req['params']['store_phone'];
+    console.log(1);
+    Reserves.sendMainReserves(store_phone, (err, result)=> {
         if (err) {
             res.status(500).send({msg: err.message});
             return;
