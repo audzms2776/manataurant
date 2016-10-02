@@ -7,7 +7,7 @@ const app = express();
 const Stores = require('../model/stores');
 
 router.route('/join')
-    .post(joinStore);
+    .get(joinStore);
 
 router.route('/stores/:store_phone')
     .get(getStoreData);
@@ -38,11 +38,11 @@ function getStoreData(req, res, next) {
 
 function joinStore(req, res, next) {
 
-    const name = req['body']['name'];
-    const store_phone = req['body']['store_phone'];
-    const location = req['body']['location'];
-    const startTime = req['body']['startTime'];
-    const endTime = req['body']['endTime'];
+    const name = req['query']['name'];
+    const store_phone = req['query']['store_phone'];
+    const location = req['query']['location'];
+    const startTime = req['query']['startTime'];
+    const endTime = req['query']['endTime'];
 
     Stores.registerStore(name, store_phone, location, startTime, endTime, (err, result)=> {
         if (err) {
