@@ -7,8 +7,10 @@ const app = express();
 const Reserves = require('../model/reserves');
 
 router.route('/reserves/:store_phone')
-    .get(getReserveList)
-    .post(addReserveList);
+    .get(getReserveList);
+
+router.route('/reserves/add/:store_phone')
+    .get(addReserveList);
 
 router.route('/reserves/main/:store_phone')
     .get(getReservesMainList);
@@ -43,13 +45,14 @@ function getReserveList(req, res, next) {
 function addReserveList(req, res, next) {
 
     const store_phone = req['params']['store_phone'];
-    const name = req['body']['name'];
-    const group = req['body']['group'];
-    const date = req['body']['date'];
-    const time = req['body']['time'];
-    const subscriber_phone = req['body']['subscriber_phone'];
-    const number = parseInt(req['body']['number']);
+    const name = req['query']['name'];
+    const group = req['query']['group'];
+    const date = req['query']['date'];
+    const time = req['query']['time'];
+    const subscriber_phone = req['query']['subscriber_phone'];
+    const number = parseInt(req['query']['number']);
 
+    console.log(req);
     Reserves.saveReserve(store_phone, name, group, date, time, subscriber_phone, number, (err, result)=> {
         if (err) {
             res.status(500).send({msg: err.message});
