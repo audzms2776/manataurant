@@ -60,6 +60,11 @@ Stores.registerStore = (name, store_phone, location, startTime, endTime, callbac
 
         var jBody = JSON.parse(body);
 
+        if(jBody['errorCode'] == 'MP03'){
+            console.log(11);
+            callback({msg: "no"}, null);
+        }
+
         console.log(jBody['total']);
         var obj = {
             "name": name,
