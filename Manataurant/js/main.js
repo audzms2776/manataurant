@@ -243,9 +243,28 @@ app.controller('DefaultCtrl', function ($scope, $http) {
 
     $scope.editData = function(){
 
-      console.log($scope.myData);
-      console.log($scope.joinLocation);
-      $scope.joinLocation = '';
+      $http({
+          method: "GET",
+          "url": "http://175.126.112.98:3000/stores/" + localStorage.store_phone + "/edit?name=" + $scope.myData['name'] +
+          "&store_phone=" + $scope.myData['store_phone'] +
+          "&location=" + $scope.joinLocation +
+          "&startTime=" + $scope.myData['startTime'] +
+          "&endTime=" + $scope.myData['endTime']
+      }).then(function mySucces(response) {
+          console.log(response['data']);
+          localStorage.store_phone = $scope.myData['store_phone'];
+          console.log($scope.myData);
+          console.log($scope.joinLocation);
+          $scope.joinLocation = '';
+          getBaseData($scope, $http);
+      }, function myError(response) {
+          console.log(response);
+          console.log('Fail~');
+          var popupElement = document.getElementById("edit_popup"), popup = tau.widget.Popup(popupElement);
+          popup.open();
+          $("#edit_popup").attr('style', 'top:0px; ');
+      });
+
     }
 });
 
