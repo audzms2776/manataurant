@@ -111,7 +111,6 @@ Stores.changeStore = (before_phone, name, store_phone, location, startTime, endT
       var jBody = JSON.parse(body);
 
       if(jBody['errorCode'] == 'MP03'){
-          console.log(11);
           callback({msg: "no"}, null);
       }
 

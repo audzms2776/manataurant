@@ -12,7 +12,7 @@ router.route('/join')
 router.route('/stores/:store_phone')
     .get(getStoreData);
 
-router.route('/stores/:store_phone/edit')
+router.route('/stores/:before_phone/edit')
     .get(joinStore);
 
 function getStoreData(req, res, next) {
@@ -63,7 +63,7 @@ function joinStore(req, res, next) {
 
 function joinStore(req, res, next) {
 
-    const before_phone = req['params']['store'];
+    const before_phone = req['params']['before_phone'];
     const name = req['query']['name'];
     const store_phone = req['query']['store_phone'];
     const location = req['query']['location'];
