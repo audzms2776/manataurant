@@ -8,8 +8,6 @@ if (date.getMonth() < 9) {
     today += (date.getMonth() + 1);
 }
 
-
-
 function getBaseData($scope, $http) {
     $http({
         method: "GET",
@@ -242,6 +240,13 @@ app.controller('DefaultCtrl', function ($scope, $http) {
             $("#join_popup").attr('style', 'top:0px; ');
         });
     };
+
+    $scope.editData = function(){
+
+      console.log($scope.myData);
+      console.log($scope.joinLocation);
+      $scope.joinLocation = '';
+    }
 });
 
 (function () {

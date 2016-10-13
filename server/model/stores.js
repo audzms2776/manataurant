@@ -89,4 +89,54 @@ Stores.registerStore = (name, store_phone, location, startTime, endTime, callbac
     });
 };
 
+Stores.changeStore = (before_phone, name, store_phone, location, startTime, endTime, callback)=> {
+  var options = {
+      method: 'GET',
+      url: 'https://openapi.naver.com/v1/map/geocode',
+      qs: {
+          query: location,
+          encoding: 'utf-8'
+      },
+      headers: {
+          'postman-token': '751b822c-3fdf-7e44-7bc6-c210af93dcf9',
+          'cache-control': 'no-cache',
+          'x-naver-client-secret': 'yzvyDMQvAL',
+          'x-naver-client-id': 'a1RZIb1p59TLbq3iu_un'
+      }
+  };
+
+  request(options, function (error, response, body) {
+      if (error) throw new Error(error);
+
+      var jBody = JSON.parse(body);
+
+      if(jBody['errorCode'] == 'MP03'){
+          console.log(11);
+          callback({msg: "no"}, null);
+      }
+
+      console.log(jBody['total']);
+      var obj = {
+          "name": name,
+          "store_phone": store_phone,
+          "x": jBody['result']['items'][0]['point']['x'],
+          "y": jBody['result']['items'][0]['point']['y'],
+          "startTime": startTime,
+          "endTime": endTime
+      };
+
+      console.log(obj);
+
+      db.collection('stores').update({'store_phone': before_phone}, {$set: obj},
+       (err, result)=> {
+          if(err){
+            console.log(err);
+            callback(err, null);
+          }
+
+          callback(null, {msg:"success"});
+      });
+  });
+};
+
 module.exports = Stores;
