@@ -15,6 +15,10 @@ const storeRouter = require('./router/storeRouter');
 app.use(reserveRouter);
 app.use(storeRouter);
 
+app.get('/', (req, res)=> {
+    res.sendFile(__dirname + '/view/index.html');
+});
+
 app.use((err, req, res, next)=> {
     res.send({message: err.message});
 });

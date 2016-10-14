@@ -23,16 +23,16 @@
                 <li class="ui-li-anchor" data-inline="true"
                     style="background: rgb(255, 238, 88); border-right: 2px solid black"><a
                         href="#" class="ui-tab-active" data-inline="true"
-                        style="color: rgb(121, 85, 72);">예약</a></li>
+                        style="color: rgb(121, 85, 72);">reservation</a></li>
                 <li class="ui-li-anchor" data-inline="true"
                     style="background: rgb(255, 238, 88); border-right: 2px solid black"><a
-                        href="#" data-inline="true" style="color: rgb(121, 85, 72)">사람</a></li>
+                        href="#" data-inline="true" style="color: rgb(121, 85, 72)">subscriber</a></li>
                 <li class="ui-li-anchor" data-inline="true"
                     style="background: rgb(255, 238, 88); border-right: 2px solid black"><a
-                        href="#" data-inline="true" style="color: rgb(121, 85, 72)">추가</a></li>
+                        href="#" data-inline="true" style="color: rgb(121, 85, 72)">add</a></li>
                 <li class="ui-li-anchor" data-inline="true"
                     style="background: rgb(255, 238, 88); border-right: 2px solid black"><a
-                        href="#" data-inline="true" style="color: rgb(121, 85, 72)">정보</a></li>
+                        href="#" data-inline="true" style="color: rgb(121, 85, 72)">profile</a></li>
             </ul>
         </div>
         <div class="ui-section-changer" id="sectionChanger">
@@ -41,7 +41,7 @@
                     <div ng-hide="isMain">
                         <!-- isBlockedMember가 true값을 가지면 해당 <div>태그는 보이지 않습니다.-->
                         <div>
-                            <h2>아직 추가된 예약이 없습니다<br/>예약을 추가해 주세요</h2>
+                            <h2>No added yet scheduled<br/>please add reservation</h2>
                         </div>
                     </div>
                     <ul class="ui-listview" ng-repeat="reserve in reserveList" style="margin-bottom: 15px;"
@@ -50,7 +50,7 @@
                             style="width: 50%; height: 70px;border: 3px solid palegoldenrod; margin: 0 auto; text-align:center; background-color: white;">
                             <a href="#main_popup"
                                data-inline="true" data-rel="popup"
-                               data-position-to="window">{{reserve['date']}}<br>예약</a>
+                               data-position-to="window">{{reserve['date']}}<br>reservation</a>
                         </li>
                     </ul>
                     </ul>
@@ -59,7 +59,7 @@
                     <div ng-hide="isPerson">
                         <!-- isBlockedMember가 true값을 가지면 해당 <div>태그는 보이지 않습니다.-->
                         <div>
-                            <h2>아직 추가된 예약이 없습니다<br/>예약을 추가해 주세요</h2>
+                            <h2>No added yet scheduled<br/>please add reservation</h2>
                         </div>
                     </div>
                     <ul class="ui-listview" id="person-listview"
@@ -72,37 +72,37 @@
                     </ul>
                 </section>
                 <section style="background: rgb(255, 253, 231);">
-                    이름 : <input type="text" data-inline="true" ng-model="addName" placeholder="이름을 입력해주세요"/>
-                    단체명 : <input type="text" data-inline="true" ng-model="addGroup" placeholder="단체명을 입력해주세요"/>
-                    전화번호 : <input type="text" data-inline="true" ng-model="addPhone" placeholder="전화번호를 입력해주세요"/>
-                    날짜 : <input type="text" data-inline="true" ng-model="addDate" placeholder="날짜를 입력해주세요"/>
+                    name : <input type="text" data-inline="true" ng-model="addName" placeholder="please add name"/>
+                    group : <input type="text" data-inline="true" ng-model="addGroup" placeholder="please add group"/>
+                    phone number : <input type="text" data-inline="true" ng-model="addPhone" placeholder="please add phone number"/>
+                    date : <input type="text" data-inline="true" ng-model="addDate" placeholder="please add date"/>
 
                     <button data-inline="true"><a
                             href="#year_popup" style="text-decoration:none; color: black"
-                            data-inline="true" data-rel="popup">년도 선택
+                            data-inline="true" data-rel="popup">select year
                     </a></button>
 
                     <button data-inline="true"><a
                             href="#month_popup" style="text-decoration:none; color: black"
-                            data-inline="true" data-rel="popup">달 선택
+                            data-inline="true" data-rel="popup">select month
                     </a></button>
 
                     <button data-inline="true"><a
                             href="#day_popup" style="text-decoration:none; color: black"
-                            data-inline="true" data-rel="popup">일 선택
+                            data-inline="true" data-rel="popup">select day
                     </a></button>
                     <br/>
-                    인원 수 : <input type="text" data-inline="true" ng-model="addNum" placeholder="인원 수를 입력해주세요"/>
-                    시간 : <input type="text" data-inline="true" ng-model="addTime" placeholder="시간을 입력해주세요"/>
+                    personnel : <input type="text" data-inline="true" ng-model="addNum" placeholder="please add personnel"/>
+                    time : <input type="text" data-inline="true" ng-model="addTime" placeholder="please add time"/>
 
                     <button data-inline="true"><a
                             href="#hour_popup" style="text-decoration:none; color: black"
-                            data-inline="true" data-rel="popup">시 선택
+                            data-inline="true" data-rel="popup">select hour
                     </a></button>
 
                     <button data-inline="true"><a
                             href="#min_popup" style="text-decoration:none; color: black"
-                            data-inline="true" data-rel="popup">분 선택
+                            data-inline="true" data-rel="popup">select minute
                     </a></button>
 
                     <div id="year_popup"
@@ -158,29 +158,29 @@
                         </ul>
                     </div>
                     <br/><br/><br/><br/>
-                    <button ng-click="addReserve()" style="background-color: #fffd05; color: black">추가하기</button>
+                    <button ng-click="addReserve()" style="background-color: #fffd05; color: black">add reservation</button>
                 </section>
                 <section style="background: rgb(255, 253, 231);">
-                    <h2 style="text-align:center;">음식점 이름</h2>
+                    <h2 style="text-align:center;">name</h2>
                     <div style="text-align:center;"><span style="border:10px gold solid; padding: 2px;"><b>{{myData['name']}}</b></span>
                     </div>
-                    <h2 style="text-align:center;">전화번호</h2>
+                    <h2 style="text-align:center;">phone</h2>
                     <div style="text-align: center"><span style="border:10px gold solid; padding: 2px;"><b>{{myData['store_phone']}}</b></span>
                     </div>
-                    <h2 style="text-align:center;">영업시간</h2>
-                    <div style="text-align: center"> <span style="border:10px gold solid; padding: 2px;"><b>{{myData['startTime']}}부터
-								{{myData['endTime']}}까지</b></span></div>
+                    <h2 style="text-align:center;">business hour</h2>
+                    <div style="text-align: center"> <span style="border:10px gold solid; padding: 2px;"><b>{{myData['startTime']}} from
+								{{myData['endTime']}} to</b></span></div>
                     <br/><br/>
-                    <h2 style="text-align:center;">위치</h2><img
+                    <h2 style="text-align:center;">location</h2><img
                         ng-src="https://openapi.naver.com/v1/map/staticmap.bin?clientId=a1RZIb1p59TLbq3iu_un&url=localhost&crs=EPSG:4326&center={{myData['location']}}&level=13&w=340&h=450&baselayer=default&markers={{myData['location']}}"
                         style="width: 80%; height: 60%; margin-left:auto; margin-right: auto; display: block; border: 10px gold solid"/>
                     <br/><br/><br/>
                     <button data-inline="true" style="background: rgb(255, 238, 88);"><a
                             href="#edit_popup" style="text-decoration:none; color: black"
-                            data-inline="true" data-rel="popup">수정하기
+                            data-inline="true" data-rel="popup">edit
                     </a></button>
                     <script>
-                    $("#edit_popup").attr('style', 'top:0px; ');
+                        $("#edit_popup").attr('style', 'top:0px; ');
                     </script>
                 </section>
             </div>
@@ -194,57 +194,59 @@
                  ng-class="IsFiltered(document.Filtered)">
                 <div style="background-color: white; border: 3px solid gold; margin-bottom: 5px">
                     <p>{{reserve['date']}}</p>
-                    <p>인원 수 : {{reserve['number']}}</p>
-                    <p>시간 : {{reserve['time']}}</p>
-                    <p>전화번호 : {{reserve['subscriber_phone']}}</p>
-                    <p>단체 명 : {{reserve['group']}}</p>
+                    <p>personnel : {{reserve['number']}}</p>
+                    <p>time : {{reserve['time']}}</p>
+                    <p>phone number : {{reserve['subscriber_phone']}}</p>
+                    <p>group : {{reserve['group']}}</p>
                 </div>
             </div>
         </div>
         <div class="ui-popup-footer">
-            <a class="ui-btn" data-rel="back" data-inline="true" style="background-color: #fffd05; color: black">닫기</a>
+            <a class="ui-btn" data-rel="back" data-inline="true" style="background-color: #fffd05; color: black">close</a>
         </div>
     </div>
     <div id="main_popup" class="ui-popup ui-popup-listview"
          style="position: absolute;">
-        <div class="ui-popup-header" style="color: black;"><b>예약 확인하기</b></div>
+        <div class="ui-popup-header" style="color: black;"><b>reservation</b></div>
         <div class="ui-popup-content" style="overflow: auto">
             <div style="background-color: white; border: 3px solid gold; margin-bottom: 5px"
                  ng-repeat="reserve in mainData">
-                <p>이름 : {{reserve['name']}}</p>
-                <p>인원 수 : {{reserve['number']}}</p>
-                <p>날짜 : {{reserve['date'].split('-')[1] + '-' + reserve['date'].split('-')[2]}}</p>
-                <p>시간 : {{reserve['time']}}</p>
-                <p>전화번호 : {{reserve['subscriber_phone']}}</p>
-                <p>단체 명 : {{reserve['group']}}</p>
+                <p>name : {{reserve['name']}}</p>
+                <p>personnel : {{reserve['number']}}</p>
+                <p>date : {{reserve['date'].split('-')[1] + '-' + reserve['date'].split('-')[2]}}</p>
+                <p>time : {{reserve['time']}}</p>
+                <p>phone number : {{reserve['subscriber_phone']}}</p>
+                <p>group : {{reserve['group']}}</p>
             </div>
         </div>
         <div class="ui-popup-footer">
-            <a class="ui-btn" data-rel="back" data-inline="true" style="background-color: #fffd05; color: black">닫기</a>
+            <a class="ui-btn" data-rel="back" data-inline="true" style="background-color: #fffd05; color: black">close</a>
         </div>
     </div>
     <div id="join_popup" class="ui-popup ui-popup-listview">
-        <div class="ui-popup-header" style="color: black">Join Us</div>
+        <div class="ui-popup-header" style="color: black">Join</div>
         <div class="ui-popup-content">
-            음식점 이름 : <input type="text" data-inline="true" ng-model="joinTitle" placeholder="음식점 이름을 입력해주세요"/>
-            전화번호 : <input type="text" data-inline="true" ng-model="joinPhone" placeholder="전화번호를 입력해주세요"/>
-            영업 시작 시간 : <input type="text" data-inline="true" ng-model="joinSTime" placeholder="엽업 시작 시간을 입력해주세요"/>
-            영업 종료 시간 : <input type="text" data-inline="true" ng-model="joinETime" placeholder="영업 종료 시간을 입력해주세요"/>
-            주소 : <input type="text" data-inline="true" ng-model="joinLocation" placeholder="주소를 입력해주세요"/>
+            name : <input type="text" data-inline="true" ng-model="joinTitle" placeholder="please add name"/>
+            store phone number : <input type="text" data-inline="true" ng-model="joinPhone" placeholder="please add store phone number"/>
+            business start time : <input type="text" data-inline="true" ng-model="joinSTime" placeholder="please add business start time"/>
+            business end time : <input type="text" data-inline="true" ng-model="joinETime" placeholder="please add business end time"/>
+            location : <input type="text" data-inline="true" ng-model="joinLocation" placeholder="please add location"/>
         </div>
         <div class="ui-popup-footer">
             <a class="ui-btn" data-rel="back"
-               style="background-color: #fffd05; color: black" data-inline="true" ng-click="joinTask()">가입하기</a>
+               style="background-color: #fffd05; color: black" data-inline="true" ng-click="joinTask()">join</a>
         </div>
     </div>
     <div id="edit_popup" class="ui-popup ui-popup-listview">
         <div class="ui-popup-header" style="color: black">Edit profile</div>
         <div class="ui-popup-content">
-            음식점 이름 : <input type="text" data-inline="true" ng-model="myData['name']" placeholder="음식점 이름을 입력해주세요"/>
-            전화번호 : <input type="text" data-inline="true" ng-model="myData['store_phone']" placeholder="전화번호를 입력해주세요"/>
-            영업 시작 시간 : <input type="text" data-inline="true" ng-model="myData['startTime']" placeholder="엽업 시작 시간을 입력해주세요"/>
-            영업 종료 시간 : <input type="text" data-inline="true" ng-model="myData['endTime']" placeholder="영업 종료 시간을 입력해주세요"/>
-            주소 : <input type="text" data-inline="true" ng-model="joinLocation" placeholder="주소를 입력해주세요"/>
+            name : <input type="text" data-inline="true" ng-model="myData['name']" placeholder="음식점 이름을 입력해주세요"/>
+            store phone number : <input type="text" data-inline="true" ng-model="myData['store_phone']" placeholder="전화번호를 입력해주세요"/>
+            business start time : <input type="text" data-inline="true" ng-model="myData['startTime']"
+                              placeholder="엽업 시작 시간을 입력해주세요"/>
+            business end time : <input type="text" data-inline="true" ng-model="myData['endTime']"
+                              placeholder="영업 종료 시간을 입력해주세요"/>
+            location : <input type="text" data-inline="true" ng-model="joinLocation" placeholder="주소를 입력해주세요"/>
         </div>
         <div class="ui-popup-footer" style=" align: right;">
             <a class="ui-btn" data-rel="back"
