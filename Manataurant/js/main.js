@@ -62,7 +62,7 @@ app.controller('DefaultCtrl', function ($scope, $http) {
     $scope.addTime = '00:00';
     $scope.addName = '';
     $scope.addGroup = '';
-    $scope.addPhone = '';
+    $scope.addPhone = '000-0000-0000';
     $scope.addNum = '';
     $scope.addDate = '0000-00-00';
 
@@ -129,7 +129,7 @@ app.controller('DefaultCtrl', function ($scope, $http) {
         $(function () {
             var popup = document.getElementById("main_popup");
             popup.addEventListener("popupafteropen", function () {
-                $('.ui-popup-header b').text(date + ' 예약 확인하기');
+                $('.ui-popup-header b').text(date + ' check reservation');
             });
 
             $("#main_popup").attr(

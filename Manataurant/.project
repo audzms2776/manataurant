@@ -15,10 +15,16 @@
 			<arguments>
 			</arguments>
 		</buildCommand>
+		<buildCommand>
+			<name>org.tizen.web.privilege.nature.PrivilegeBuilder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
 	</buildSpec>
 	<natures>
 		<nature>json.validation.nature</nature>
 		<nature>org.eclipse.wst.jsdt.core.jsNature</nature>
 		<nature>org.tizen.web.project.builder.WebNature</nature>
+		<nature>org.tizen.web.privilege.nature.PrivilegeNature</nature>
 	</natures>
 </projectDescription>

@@ -2,6 +2,22 @@
 <SignedInfo>
 <CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"></CanonicalizationMethod>
 <SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha256"></SignatureMethod>
+<Reference URI=".idea%2FManataurant.iml">
+<DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
+<DigestValue>A1/Y+pCmiYS5xq4rNVmewwwEW+ZhiCq4v2OL7fpg4iE=</DigestValue>
+</Reference>
+<Reference URI=".idea%2Fmisc.xml">
+<DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
+<DigestValue>FtdMooyiy/P136aVnV/Mzg0VYAMOXvgJDFRa/Mo4uBs=</DigestValue>
+</Reference>
+<Reference URI=".idea%2Fmodules.xml">
+<DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
+<DigestValue>dIgcv0joO8dAfW6tx7dLHl8krVLZp7IiWBgrPgYxtQk=</DigestValue>
+</Reference>
+<Reference URI=".idea%2Fworkspace.xml">
+<DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
+<DigestValue>NVKVnO4xhKO8RNFPCbSZ6cKbSssKUygxQEc0HMkBzSs=</DigestValue>
+</Reference>
 <Reference URI="config.xml">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
 <DigestValue>uzTviMdh4/hLBzNdDJ1RR4CamzK1YIriX12QPAQpQrw=</DigestValue>
@@ -28,7 +44,7 @@
 </Reference>
 <Reference URI="index.html">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
-<DigestValue>o/eLpX/c2vvL82j/4IY+vqBuLkoKUbQ09OtviW+i/BQ=</DigestValue>
+<DigestValue>nXa011XoUAiqGy0ueWNvyjKZeMDxo/w70FOhM56TZCk=</DigestValue>
 </Reference>
 <Reference URI="js%2Fangular.min.js">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
@@ -100,7 +116,7 @@
 </Reference>
 <Reference URI="js%2Fmain.js">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
-<DigestValue>cGHHj7wzkRaL9zaUjctBeF0FrmKwOQPgDl4XJoPsNHU=</DigestValue>
+<DigestValue>ZQwxyF+8r54mgaWFiEN9IDuBp4Q9djQxOJYlTRJEMzs=</DigestValue>
 </Reference>
 <Reference URI="lib%2Ftau%2FLICENSE.Flora">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
@@ -855,11 +871,11 @@
 </Reference>
 </SignedInfo>
 <SignatureValue>
-cqKeLHlVMLi94/Q2kRmuy62E5CIs3imlyGm7N3H/If3WupqemWoKwFQW207QFcPx/oioeCj+1fRo
-CO+j+ap9zZNMA1HpOwXy1R/ThehziJiBN/EckHYufX5aQnFEAc1XnCLdf4K2ORmLE8Fj9bPcrAem
-MlF4qcpXnXxOJuR/+fKoV0JXzIF6iPrpn4CzFww9/I6xzOTVN+1KbLX/33XokxVJooaijsyO9ZjT
-M0NPqN9rs9rKBEcKJWmFxgMwtu6SFoeI6ngiwL33ACBE3UfHrv6vMYaw29Xoh3XdlgexCyx+JoaC
-prRXiXAz2aT7Q9EtnjlKUfY4SMgMYLWHIr6MsA==
+KpzXr8lhIR/5fV6l7CREFx3QTPyWot7g5bhJFrNRHwMeb2kaL9gEiNnkWCPtrVf7qSwjdRfsxU4+
+9FyccasdeGR8HgELlj0Rc5bWRiW+VbNuqogIAZ/uwLBuS2ETu6K4GB6AjFQZKeWH9VL673amk3MS
+8HAonRGpuyMb2W4OtAmKL0mEPhSsMEnew9g2QTvyOXQayX2VPJfSSjpmWY1cV+zVRe+p8TMP+QJw
+pCrYADEVSi2w38JxR5hGmtafZD0FFQ1WVG1kC3OCet++MzN04lE/rlTvoRJn0Aqq6QDQ8T7LOA58
+RcNSBmnkkuoYU5NA/XqO0kzL0I2FU6B1+uDvKQ==
 </SignatureValue>
 <KeyInfo>
 <X509Data>
