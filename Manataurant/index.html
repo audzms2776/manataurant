@@ -12,8 +12,6 @@
 <script src="js/angular.min.js"></script>
 <script src="js/jquery.js"></script>
 <script src="./lib/tau/mobile/js/tau.js" data-build-remove="false"></script>
-<script type="text/javascript"
-	src="https://openapi.map.naver.com/openapi/v3/maps.js?clientId=a1RZIb1p59TLbq3iu_un"></script>
 </head>
 <body>
 	<div class="ui-page" id="main" ng-controller="DefaultCtrl">
@@ -169,24 +167,20 @@
 							reservation</button>
 					</section>
 					<section style="background: rgb(255, 253, 231);">
-						<h2 style="text-align: center;">name</h2>
+						<h2 style="text-align: center;">NAME</h2>
 						<div style="text-align: center;">
 							<span style="border: 10px gold solid; padding: 2px;"><b>{{myData['name']}}</b></span>
 						</div>
-						<h2 style="text-align: center;">phone</h2>
+						<h2 style="text-align: center;">PHONE</h2>
 						<div style="text-align: center">
 							<span style="border: 10px gold solid; padding: 2px;"><b>{{myData['store_phone']}}</b></span>
 						</div>
-						<h2 style="text-align: center;">business hour</h2>
+						<h2 style="text-align: center;">BUSINESS HOUR</h2>
 						<div style="text-align: center">
 							<span style="border: 10px gold solid; padding: 2px;"><b>from
 									{{myData['startTime']}} to {{myData['endTime']}} </b></span>
 						</div>
 						<br /> <br />
-						<h2 style="text-align: center;">location</h2>
-						<img
-							ng-src="https://openapi.naver.com/v1/map/staticmap.bin?clientId=a1RZIb1p59TLbq3iu_un&url=localhost&crs=EPSG:4326&center={{myData['location']}}&level=13&w=340&h=450&baselayer=default&markers={{myData['location']}}"
-							style="width: 80%; height: 60%; margin-left: auto; margin-right: auto; display: block; border: 10px gold solid" />
 						<br /> <br /> 
 						<button style="background: rgb(255, 238, 88); color: black" id="edit_btn">edit</button>
 						<script>
@@ -257,9 +251,7 @@
 				: <input type="text" data-inline="true" ng-model="joinSTime"
 					placeholder="please add business start time" /> business end time
 				: <input type="text" data-inline="true" ng-model="joinETime"
-					placeholder="please add business end time" /> location : <input
-					type="text" data-inline="true" ng-model="joinLocation"
-					placeholder="please add location" />
+					placeholder="please add business end time" />
 			</div>
 			<div class="ui-popup-footer">
 				<a class="ui-btn" data-rel="back"
@@ -279,9 +271,7 @@
 					ng-model="myData['startTime']"
 					placeholder="please add business start time" /> business end time
 				: <input type="text" data-inline="true" ng-model="myData['endTime']"
-					placeholder="please add business end time" /> location : <input
-					type="text" data-inline="true" ng-model="joinLocation"
-					placeholder="please add location" />
+					placeholder="please add business end time" /> 
 			</div>
 			<div class="ui-popup-footer" style="align: right;">
 				<a class="ui-btn" data-rel="back"

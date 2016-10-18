@@ -70,7 +70,6 @@ app.controller('DefaultCtrl', function ($scope, $http) {
     $scope.joinPhone = '000-000-0000';
     $scope.joinSTime = '00:00';
     $scope.joinETime = '00:00';
-    $scope.joinLocation = '';
 
     if (localStorage.getItem('store_phone') == null) {
         console.log('전화번호가 없다!');
@@ -224,7 +223,6 @@ app.controller('DefaultCtrl', function ($scope, $http) {
             method: "GET",
             "url": "http://175.126.112.98:3000/join?name=" + $scope.joinTitle +
             "&store_phone=" + $scope.joinPhone +
-            "&location=" + $scope.joinLocation +
             "&startTime=" + $scope.joinSTime +
             "&endTime=" + $scope.joinETime
         }).then(function mySucces(response) {
@@ -247,15 +245,12 @@ app.controller('DefaultCtrl', function ($scope, $http) {
           method: "GET",
           "url": "http://175.126.112.98:3000/stores/" + localStorage.store_phone + "/edit?name=" + $scope.myData['name'] +
           "&store_phone=" + $scope.myData['store_phone'] +
-          "&location=" + $scope.joinLocation +
           "&startTime=" + $scope.myData['startTime'] +
           "&endTime=" + $scope.myData['endTime']
       }).then(function mySucces(response) {
           console.log(response['data']);
           localStorage.store_phone = $scope.myData['store_phone'];
           console.log($scope.myData);
-          console.log($scope.joinLocation);
-          $scope.joinLocation = '';
           getBaseData($scope, $http);
       }, function myError(response) {
           console.log(response);
