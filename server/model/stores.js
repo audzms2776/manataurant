@@ -5,7 +5,6 @@ const MongoClient = require('mongodb').MongoClient;
 const url = 'mongodb://localhost:27017/manatarurant';
 const ObjectID = require('mongodb').ObjectID;
 var db;
-const request = require("request");
 
 function Stores() {
 
@@ -30,112 +29,50 @@ Stores.sendStoreData = (store_phone, callback)=> {
             return;
         }
 
-        var location = docs[0]['x'] + ', ' + docs[0]['y'];
-        delete docs[0]['x'];
-        delete docs[0]['y'];
-        docs[0]['location'] = location;
         callback(null, docs[0]);
     });
 };
 
 Stores.registerStore = (name, store_phone, location, startTime, endTime, callback)=> {
 
-    var options = {
-        method: 'GET',
-        url: 'https://openapi.naver.com/v1/map/geocode',
-        qs: {
-            query: location,
-            encoding: 'utf-8'
-        },
-        headers: {
-            'postman-token': '751b822c-3fdf-7e44-7bc6-c210af93dcf9',
-            'cache-control': 'no-cache',
-            'x-naver-client-secret': 'yzvyDMQvAL',
-            'x-naver-client-id': 'a1RZIb1p59TLbq3iu_un'
-        }
+    var obj = {
+        "name": name,
+        "store_phone": store_phone,
+        "startTime": startTime,
+        "endTime": endTime,
+        "subscriber": []
     };
 
-    request(options, function (error, response, body) {
-        if (error) throw new Error(error);
+    console.log(obj);
 
-        var jBody = JSON.parse(body);
-
-        if(jBody['errorCode'] == 'MP03'){
-            console.log(11);
-            callback({msg: "no"}, null);
+    db.collection('stores').insert(obj, (err)=> {
+        if (err) {
+            callback(err, null);
+            return;
         }
 
-        console.log(jBody['total']);
-        var obj = {
-            "name": name,
-            "store_phone": store_phone,
-            "x": jBody['result']['items'][0]['point']['x'],
-            "y": jBody['result']['items'][0]['point']['y'],
-            "startTime": startTime,
-            "endTime": endTime,
-            "subscriber": []
-        };
-
-        console.log(obj);
-
-        db.collection('stores').insert(obj, (err)=> {
-            if (err) {
-                callback(err, null);
-                return;
-            }
-
-            callback(null, {msg: "success"});
-        });
+        callback(null, {msg: "success"});
     });
 };
 
 Stores.changeStore = (before_phone, name, store_phone, location, startTime, endTime, callback)=> {
-  var options = {
-      method: 'GET',
-      url: 'https://openapi.naver.com/v1/map/geocode',
-      qs: {
-          query: location,
-          encoding: 'utf-8'
-      },
-      headers: {
-          'postman-token': '751b822c-3fdf-7e44-7bc6-c210af93dcf9',
-          'cache-control': 'no-cache',
-          'x-naver-client-secret': 'yzvyDMQvAL',
-          'x-naver-client-id': 'a1RZIb1p59TLbq3iu_un'
-      }
-  };
 
-  request(options, function (error, response, body) {
-      if (error) throw new Error(error);
+    var obj = {
+        "name": name,
+        "store_phone": store_phone,
+        "startTime": startTime,
+        "endTime": endTime
+    };
 
-      var jBody = JSON.parse(body);
+    db.collection('stores').update({'store_phone': before_phone}, {$set: obj},
+        (err, result)=> {
+            if (err) {
+                console.log(err);
+                callback(err, null);
+            }
 
-      if(jBody['errorCode'] == 'MP03'){
-          callback({msg: "no"}, null);
-      }
-
-      console.log(jBody['total']);
-      var obj = {
-          "name": name,
-          "store_phone": store_phone,
-          "x": jBody['result']['items'][0]['point']['x'],
-          "y": jBody['result']['items'][0]['point']['y'],
-          "startTime": startTime,
-          "endTime": endTime
-      };
-
-      console.log(obj);
-
-      db.collection('stores').update({'store_phone': before_phone}, {$set: obj},
-       (err, result)=> {
-          if(err){
-            console.log(err);
-            callback(err, null);
-          }
-
-          callback(null, {msg:"success"});
-      });
-  });
+            callback(null, {msg: "success"});
+        });
 };
 
 module.exports = Stores;

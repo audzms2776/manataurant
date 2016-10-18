@@ -43,11 +43,10 @@ function joinStore(req, res, next) {
 
     const name = req['query']['name'];
     const store_phone = req['query']['store_phone'];
-    const location = req['query']['location'];
     const startTime = req['query']['startTime'];
     const endTime = req['query']['endTime'];
 
-    Stores.registerStore(name, store_phone, location, startTime, endTime, (err, result)=> {
+    Stores.registerStore(name, store_phone, startTime, endTime, (err, result)=> {
         if (err) {
             res.status(500).send({msg: err.message});
             return;
@@ -66,11 +65,10 @@ function editStore(req, res, next) {
     const before_phone = req['params']['before_phone'];
     const name = req['query']['name'];
     const store_phone = req['query']['store_phone'];
-    const location = req['query']['location'];
     const startTime = req['query']['startTime'];
     const endTime = req['query']['endTime'];
 
-    Stores.changeStore(before_phone, name, store_phone, location, startTime, endTime, (err, result)=> {
+    Stores.changeStore(before_phone, name, store_phone, startTime, endTime, (err, result)=> {
         if (err) {
             res.status(500).send({msg: err.message});
             return;

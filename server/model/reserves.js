@@ -86,7 +86,6 @@ Reserves.sendSubscriberDetail = (store_phone, subscriber_phone, callback)=> {
 
 Reserves.sendMainReserves = (store_phone, callback)=> {
 
-    console.log(store_phone);
     db.collection('stores').find({'store_phone': store_phone}).toArray((err, docs)=> {
         if (err) {
             return callback(err, null);

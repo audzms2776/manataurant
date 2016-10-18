@@ -88,7 +88,6 @@ function getSubscriberDetail(req, res) {
 function getReservesMainList(req, res) {
 
     const store_phone = req['params']['store_phone'];
-    console.log(1);
     Reserves.sendMainReserves(store_phone, (err, result)=> {
         if (err) {
             res.status(500).send({msg: err.message});
