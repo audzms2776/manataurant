@@ -33,7 +33,7 @@ Stores.sendStoreData = (store_phone, callback)=> {
     });
 };
 
-Stores.registerStore = (name, store_phone, location, startTime, endTime, callback)=> {
+Stores.registerStore = (name, store_phone, startTime, endTime, callback)=> {
 
     var obj = {
         "name": name,
