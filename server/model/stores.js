@@ -55,7 +55,7 @@ Stores.registerStore = (name, store_phone, startTime, endTime, callback)=> {
     });
 };
 
-Stores.changeStore = (before_phone, name, store_phone, location, startTime, endTime, callback)=> {
+Stores.changeStore = (before_phone, name, store_phone, startTime, endTime, callback)=> {
 
     var obj = {
         "name": name,
